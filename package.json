@@ -1,14 +1,7 @@
 {
   "name": "rtldev-middleware-php-idna-translator",
   "version": "0.0.0-development",
-  "description": "PHP IDNA Translator",
-  "directories": {
-    "lib": "src",
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "PHP IDNA Translator to convert IDNA domains to Unicode and ASCII (IDN and Punycode)",
   "license": "MIT",
   "engines": {
     "node": ">=20.6.1"
@@ -28,10 +21,8 @@
     "php",
     "library"
   ],
-  "bugs": {
-    "url": "https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/issues"
-  },
-  "homepage": "https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator#readme",
+  "bugs": "https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/issues",
+  "homepage": "https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator",
   "repository": "github:centralnicgroup-opensource/rtldev-middleware-php-idna-translator.git",
   "author": {
     "name": "Team Internet Group PLC"
