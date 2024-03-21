@@ -1,15 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="7" assertions="94" errors="0" warnings="0" failures="0" skipped="0" time="0.002659">
-    <testsuite name="IDNA Translator" tests="7" assertions="94" errors="0" warnings="0" failures="0" skipped="0" time="0.002659">
-      <testsuite name="CNIC\IDNA\Tests\IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" tests="7" assertions="94" errors="0" warnings="0" failures="0" skipped="0" time="0.002659">
-        <testcase name="testConvert" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="109" assertions="4" time="0.001815"/>
-        <testcase name="testConvertBulk" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="124" assertions="8" time="0.000122"/>
-        <testcase name="testIdnToPunycodeConversion" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="153" assertions="2" time="0.000040"/>
-        <testcase name="testToASCII" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="161" assertions="4" time="0.000072"/>
-        <testcase name="testToASCIIWithTransitional" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="172" assertions="22" time="0.000275"/>
-        <testcase name="testToASCIIWithoutTransitional" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="192" assertions="23" time="0.000178"/>
-        <testcase name="testToUnicode" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="214" assertions="31" time="0.000157"/>
+  <testsuite name="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/phpunit.xml.dist" tests="7" assertions="2" errors="7" failures="0" skipped="0" time="0.048494">
+    <testsuite name="IDNA Translator" tests="7" assertions="2" errors="7" failures="0" skipped="0" time="0.048494">
+      <testsuite name="CNIC\IDNA\Tests\IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" tests="7" assertions="2" errors="7" failures="0" skipped="0" time="0.048494">
+        <testcase name="testConvert" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="109" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="0" time="0.041262">
+          <error type="Error">CNIC\IDNA\Tests\IDNATranslatorTest::testConvert
+Error: Call to undefined function CNIC\IDNA\Converter\idn_to_utf8()
+
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Converter/UnicodeConverter.php:19
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Factory/ConverterFactory.php:61
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Factory/ConverterFactory.php:35
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php:111</error>
+        </testcase>
+        <testcase name="testConvertBulk" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="124" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="0" time="0.001590">
+          <error type="Error">CNIC\IDNA\Tests\IDNATranslatorTest::testConvertBulk
+Error: Call to undefined function CNIC\IDNA\Converter\idn_to_utf8()
+
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Converter/UnicodeConverter.php:19
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Factory/ConverterFactory.php:61
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Factory/ConverterFactory.php:28
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php:139</error>
+        </testcase>
+        <testcase name="testIdnToPunycodeConversion" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="153" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="0" time="0.001052">
+          <error type="Error">CNIC\IDNA\Tests\IDNATranslatorTest::testIdnToPunycodeConversion
+Error: Call to undefined function CNIC\IDNA\Converter\idn_to_utf8()
+
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Converter/UnicodeConverter.php:19
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Factory/ConverterFactory.php:61
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Factory/ConverterFactory.php:35
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php:156</error>
+        </testcase>
+        <testcase name="testToASCII" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="161" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="1" time="0.001314">
+          <error type="Error">CNIC\IDNA\Tests\IDNATranslatorTest::testToASCII
+Error: Call to undefined function CNIC\IDNA\Converter\idn_to_ascii()
+
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Converter/ASCIIConverter.php:20
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Factory/ConverterFactory.php:90
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php:166</error>
+        </testcase>
+        <testcase name="testToASCIIWithTransitional" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="172" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="1" time="0.001131">
+          <error type="Error">CNIC\IDNA\Tests\IDNATranslatorTest::testToASCIIWithTransitional
+Error: Call to undefined function CNIC\IDNA\Converter\idn_to_ascii()
+
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Converter/ASCIIConverter.php:20
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Factory/ConverterFactory.php:90
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php:177</error>
+        </testcase>
+        <testcase name="testToASCIIWithoutTransitional" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="192" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="0" time="0.001036">
+          <error type="Error">CNIC\IDNA\Tests\IDNATranslatorTest::testToASCIIWithoutTransitional
+Error: Call to undefined function CNIC\IDNA\Converter\idn_to_ascii()
+
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Converter/ASCIIConverter.php:20
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Factory/ConverterFactory.php:90
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php:197</error>
+        </testcase>
+        <testcase name="testToUnicode" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="214" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="0" time="0.001109">
+          <error type="Error">CNIC\IDNA\Tests\IDNATranslatorTest::testToUnicode
+Error: Call to undefined function CNIC\IDNA\Converter\idn_to_utf8()
+
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Converter/UnicodeConverter.php:19
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Factory/ConverterFactory.php:61
+/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php:219</error>
+        </testcase>
       </testsuite>
     </testsuite>
   </testsuite>
