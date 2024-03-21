@@ -31,7 +31,7 @@ use CNIC\IDNA\Factory\ConverterFactory;
 // Convert a domain string to Punycode format
 $unicodeDomain = "example.com";
 $punycodeDomain = ConverterFactory::toASCII($unicodeDomain);
-echo "Punycode Domain: $
+echo "Punycode Domain: $punycodeDomain\n";
 ```
 
 ### 3. Convert Multiple Domain Strings
