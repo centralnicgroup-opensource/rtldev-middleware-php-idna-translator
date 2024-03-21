@@ -1,0 +1,9 @@
+IDNATranslator (CNIC\IDNA\Tests\IDNATranslator)
+ [x] Convert
+ [x] Convert bulk
+ [x] Idn to punycode conversion
+ [x] To a s c i i
+ [x] To a s c i i with transitional
+ [x] To a s c i i without transitional
+ [x] To unicode
+

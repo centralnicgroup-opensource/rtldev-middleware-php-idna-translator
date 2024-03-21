@@ -3,14 +3,14 @@
 namespace CNIC\IDNA\Tests;
 
 use PHPUnit\Framework\TestCase;
-use CNIC\IDNA\IDNATranslator;
+use CNIC\IDNA\Factory\ConverterFactory;
 
 class IDNATranslatorTest extends TestCase
 {
     private static $data = [
         'convert' => [
             'öbb.at' => 'xn--bb-eka.at',
-            'faß.de' => 'xn--fa-hia.de',
+            'faß.de' => 'fass.de',
         ],
         'toAscii' => [
             '' => '',
@@ -69,13 +69,26 @@ class IDNATranslatorTest extends TestCase
         ],
         'toUnicode' => [
             'öbb.at' => 'öbb.at',
+            'Öbb.at' => 'öbb.at',
+            'ÖBB.at' => 'öbb.at',
+            'O\u0308bb.at' => 'öbb.at',
             'xn--bb-eka.at' => 'öbb.at',
             'faß.de' => 'faß.de',
             'fass.de' => 'fass.de',
             'xn--fa-hia.de' => 'faß.de',
+            'not=std3' => 'not=std3',
+            '\ud83d\udca9' => '💩',
+            '\ud87e\udcca' => '𣀊',
+            '\udb40\udd00\ud87e\udcca' => '𣀊',
+            //'\ud83d\udca9' => '\ud83d\udca9',
+            //'\ud87e\udcca' => '\ud84c\udc0a',
+            //'\udb40\udd00\ud87e\udcca' => '\ud84c\udc0a',
             'fäß.de' => 'fäß.de',
             '₹.com' => '₹.com',
             '𑀓.com' => '𑀓.com',
+            //'a‌b' => 'a\u200Cb',
+            'a‌b' => 'a‌b',
+            'xn--ab-j1t' => 'a‌b',
             'ȡog.de' => 'ȡog.de',
             '☕.de' => '☕.de',
             'I♥NY.de' => 'i♥ny.de',
@@ -95,16 +108,16 @@ class IDNATranslatorTest extends TestCase
 
     public function testConvert()
     {
-        $result = IDNATranslator::convert('münchen.de');
+        $result = ConverterFactory::convert('münchen.de');
         $this->assertEquals(['IDN' => 'münchen.de', 'PUNYCODE' => 'xn--mnchen-3ya.de'], $result);
 
-        $result = IDNATranslator::convert('xn--mnchen-3ya.de');
+        $result = ConverterFactory::convert('xn--mnchen-3ya.de');
         $this->assertEquals(['IDN' => 'münchen.de', 'PUNYCODE' => 'xn--mnchen-3ya.de'], $result);
 
-        $result = IDNATranslator::convert('🌐.ws');
+        $result = ConverterFactory::convert('🌐.ws');
         $this->assertEquals(['IDN' => '🌐.ws', 'PUNYCODE' => 'xn--wg8h.ws'], $result);
 
-        $result = IDNATranslator::convert('xn--wg8h.ws');
+        $result = ConverterFactory::convert('xn--wg8h.ws');
         $this->assertEquals(['IDN' => '🌐.ws', 'PUNYCODE' => 'xn--wg8h.ws'], $result);
     }
 
@@ -123,34 +136,24 @@ class IDNATranslatorTest extends TestCase
         ];
 
         // Call the convertBulk method
-        $convertedDomains = IDNATranslator::convert($domains);
-
-        // Check if the returned array has the correct keys
-        $this->assertArrayHasKey('münchen.de', $convertedDomains);
-        $this->assertArrayHasKey('xn--mnchen-3ya.de', $convertedDomains);
-        $this->assertArrayHasKey('🌐.ws', $convertedDomains);
-        $this->assertArrayHasKey('xn--wg8h.ws', $convertedDomains);
-        $this->assertArrayHasKey('😊.com', $convertedDomains);
-        $this->assertArrayHasKey('xn--o28h.com', $convertedDomains);
-        $this->assertArrayHasKey('🎉.net', $convertedDomains);
-        $this->assertArrayHasKey('xn--dk8h.net', $convertedDomains);
+        $convertedDomains = ConverterFactory::convert($domains);
 
         // Check if the converted domains have the correct values
-        $this->assertEquals(['IDN' => 'münchen.de', 'PUNYCODE' => 'xn--mnchen-3ya.de'], $convertedDomains['münchen.de']);
-        $this->assertEquals(['IDN' => 'münchen.de', 'PUNYCODE' => 'xn--mnchen-3ya.de'], $convertedDomains['xn--mnchen-3ya.de']);
-        $this->assertEquals(['IDN' => '🌐.ws', 'PUNYCODE' => 'xn--wg8h.ws'], $convertedDomains['🌐.ws']);
-        $this->assertEquals(['IDN' => '🌐.ws', 'PUNYCODE' => 'xn--wg8h.ws'], $convertedDomains['xn--wg8h.ws']);
-        $this->assertEquals(['IDN' => '😊.com', 'PUNYCODE' => 'xn--o28h.com'], $convertedDomains['😊.com']);
-        $this->assertEquals(['IDN' => '😊.com', 'PUNYCODE' => 'xn--o28h.com'], $convertedDomains['xn--o28h.com']);
-        $this->assertEquals(['IDN' => '🎉.net', 'PUNYCODE' => 'xn--dk8h.net'], $convertedDomains['🎉.net']);
-        $this->assertEquals(['IDN' => '🎉.net', 'PUNYCODE' => 'xn--dk8h.net'], $convertedDomains['xn--dk8h.net']);
+        $this->assertEquals(['IDN' => 'münchen.de', 'PUNYCODE' => 'xn--mnchen-3ya.de'], $convertedDomains[0]);
+        $this->assertEquals(['IDN' => 'münchen.de', 'PUNYCODE' => 'xn--mnchen-3ya.de'], $convertedDomains[1]);
+        $this->assertEquals(['IDN' => '🌐.ws', 'PUNYCODE' => 'xn--wg8h.ws'], $convertedDomains[2]);
+        $this->assertEquals(['IDN' => '🌐.ws', 'PUNYCODE' => 'xn--wg8h.ws'], $convertedDomains[3]);
+        $this->assertEquals(['IDN' => '😊.com', 'PUNYCODE' => 'xn--o28h.com'], $convertedDomains[4]);
+        $this->assertEquals(['IDN' => '😊.com', 'PUNYCODE' => 'xn--o28h.com'], $convertedDomains[5]);
+        $this->assertEquals(['IDN' => '🎉.net', 'PUNYCODE' => 'xn--dk8h.net'], $convertedDomains[6]);
+        $this->assertEquals(['IDN' => '🎉.net', 'PUNYCODE' => 'xn--dk8h.net'], $convertedDomains[7]);
     }
 
     // Test cases for conversion from IDN to Punycode
     public function testIdnToPunycodeConversion()
     {
         foreach (self::$data['convert'] as $idn => $punycode) {
-            $this->assertEquals($punycode, IDNATranslator::convert($idn)['PUNYCODE']);
+            $this->assertEquals($punycode, ConverterFactory::convert($idn)['PUNYCODE']);
         }
     }
 
@@ -158,7 +161,7 @@ class IDNATranslatorTest extends TestCase
     public function testToASCII()
     {
         foreach (self::$data['toAscii'] as $input => $output) {
-            $this->assertEquals($output, IDNATranslator::toASCII(
+            $this->assertEquals($output, ConverterFactory::toASCII(
                 $input,
                 ["transitionalProcessing" => true]
             ));
@@ -166,14 +169,14 @@ class IDNATranslatorTest extends TestCase
     }
 
     // Test cases for converting Transitional domain names to Punycode
-    public function testToASCIIAlwaysWithTransitional()
+    public function testToASCIIWithTransitional()
     {
         foreach (self::$data['toAsciiWithTransitional'] as $input => $output) {
-            $withTransition = IDNATranslator::toASCII(
+            $withTransition = ConverterFactory::toASCII(
                 $input,
                 ["transitionalProcessing" => true]
             );
-            $withoutTransition = IDNATranslator::toASCII(
+            $withoutTransition = ConverterFactory::toASCII(
                 $input,
                 ["transitionalProcessing" => false]
             );
@@ -186,21 +189,23 @@ class IDNATranslatorTest extends TestCase
     }
 
     // Test cases for converting Transitional domain names to Punycode
-    public function testToASCIIAlwaysWithoutTransitional()
+    public function testToASCIIWithoutTransitional()
     {
         foreach (self::$data['toAsciiWithoutTransitional'] as $input => $output) {
-            $withTransition = IDNATranslator::toASCII(
+            $withTransition = ConverterFactory::toASCII(
                 $input,
                 ["transitionalProcessing" => true]
             );
-            $withoutTransition = IDNATranslator::toASCII(
+            $withoutTransition = ConverterFactory::toASCII(
                 $input,
                 ["transitionalProcessing" => false]
             );
             $this->assertEquals(
                 $output,
                 $withoutTransition,
-                "\nInput: {$input}\nWith transition: " . $withTransition . "\nWithout transition: " . $withoutTransition
+                "\nInput: {$input}
+                \nWith transition: " . $withTransition . "
+                \nWithout transition: " . $withoutTransition
             );
         }
     }
@@ -209,7 +214,11 @@ class IDNATranslatorTest extends TestCase
     public function testToUnicode()
     {
         foreach (self::$data['toUnicode'] as $input => $output) {
-            $this->assertEquals($output, IDNATranslator::toUnicode($input, ["transitionalProcessing" => true]), "{$input} : {$output}");
+            $this->assertEquals(
+                $output,
+                ConverterFactory::toUnicode($input, ["transitionalProcessing" => true]),
+                "{$input} : {$output}"
+            );
         }
     }
 }
