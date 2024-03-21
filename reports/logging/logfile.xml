@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="7" assertions="94" errors="0" warnings="0" failures="0" skipped="0" time="0.002659">
+    <testsuite name="IDNA Translator" tests="7" assertions="94" errors="0" warnings="0" failures="0" skipped="0" time="0.002659">
+      <testsuite name="CNIC\IDNA\Tests\IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" tests="7" assertions="94" errors="0" warnings="0" failures="0" skipped="0" time="0.002659">
+        <testcase name="testConvert" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="109" assertions="4" time="0.001815"/>
+        <testcase name="testConvertBulk" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="124" assertions="8" time="0.000122"/>
+        <testcase name="testIdnToPunycodeConversion" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="153" assertions="2" time="0.000040"/>
+        <testcase name="testToASCII" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="161" assertions="4" time="0.000072"/>
+        <testcase name="testToASCIIWithTransitional" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="172" assertions="22" time="0.000275"/>
+        <testcase name="testToASCIIWithoutTransitional" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="192" assertions="23" time="0.000178"/>
+        <testcase name="testToUnicode" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" file="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="214" assertions="31" time="0.000157"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
