@@ -1,0 +1,61 @@
+{
+  "name": "rtldev-middleware-php-idna-translator",
+  "version": "0.0.0-development",
+  "description": "PHP IDNA Translator",
+  "directories": {
+    "lib": "src",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.6.1"
+  },
+  "keywords": [
+    "idna",
+    "converter",
+    "idna",
+    "domains",
+    "convert",
+    "to",
+    "punycode",
+    "covert",
+    "to",
+    "idna",
+    "idna",
+    "php",
+    "library"
+  ],
+  "bugs": {
+    "url": "https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/issues"
+  },
+  "homepage": "https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator#readme",
+  "repository": "github:centralnicgroup-opensource/rtldev-middleware-php-idna-translator.git",
+  "author": {
+    "name": "Team Internet Group PLC"
+  },
+  "maintainers": [
+    {
+      "name": "Asif Nawaz",
+      "email": "asif.nawaz@centralnic.com"
+    },
+    {
+      "name": "Kai Schwarz",
+      "email": "kai.schwarz@centralnic.com"
+    }
+  ],
+  "overrides": {
+    "glob-parent": "^6.0.2",
+    "chokidar": "^3.5.3"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "gulp": "^4.0.2",
+    "rtldev-middleware-gulp-release-notification-plugin": "github:centralnicgroup-opensource/rtldev-middleware-gulp-release-notification-plugin#semver:^2.0.7",
+    "semantic-release": "^23.0.5"
+  }
+}
