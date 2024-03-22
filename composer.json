@@ -24,7 +24,13 @@
         "coverage": "XDEBUG_MODE=coverage phpunit --coverage-html=./reports/html"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "preferred-install": {
+            "*": "dist"
+        }
+    },
+    "extra": {
+        "language": "php"
     },
     "minimum-stability": "stable",
     "prefer-stable": true
