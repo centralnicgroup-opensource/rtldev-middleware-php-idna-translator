@@ -46,6 +46,11 @@ Search.appendIndex(
             "summary": "Check\u0020if\u0020the\u0020keyword\u0020is\u0020in\u0020Unicode\u0020format.",
             "url": "classes/CNIC-IDNA-Converter-UnicodeConverter.html#method_check"
         },                {
+            "fqsen": "\\CNIC\\IDNA\\Converter\\UnicodeConverter\u003A\u003AcontainsUnicodeCharacters\u0028\u0029",
+            "name": "containsUnicodeCharacters",
+            "summary": "Check\u0020if\u0020a\u0020string\u0020contains\u0020Unicode\u0020characters\u0020represented\u0020by\u0020escape\u0020sequences.",
+            "url": "classes/CNIC-IDNA-Converter-UnicodeConverter.html#method_containsUnicodeCharacters"
+        },                {
             "fqsen": "\\CNIC\\IDNA\\Converter\\UnicodeConverter\u003A\u003Adecode\u0028\u0029",
             "name": "decode",
             "summary": "Convert\u0020Unicode\u0020escape\u0020sequences\u0020to\u0020their\u0020corresponding\u0020characters.",

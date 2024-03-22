@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.1...v1.0.2) (2024-03-22)
+
+
+### Bug Fixes
+
+* **unicodeconverter.php & converterfactory.php:** detection of Unicode Chars Improved ([c41fa0a](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/commit/c41fa0a439c63243487b9c1b4e75650745e82e26))
+
 ## [1.0.1](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.0...v1.0.1) (2024-03-22)
 
 

@@ -155,6 +155,13 @@
 <dd>Check if the keyword is in Unicode format.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/CNIC-IDNA-Converter-UnicodeConverter.html#method_containsUnicodeCharacters">containsUnicodeCharacters()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Check if a string contains Unicode characters represented by escape sequences.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/CNIC-IDNA-Converter-UnicodeConverter.html#method_convert">convert()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -234,6 +241,56 @@
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_containsUnicodeCharacters">
+        containsUnicodeCharacters()
+        <a href="classes/CNIC-IDNA-Converter-UnicodeConverter.html#method_containsUnicodeCharacters" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/IDNA/Converter/UnicodeConverter.php"><a href="files/src-idna-converter-unicodeconverter.html"><abbr title="src/IDNA/Converter/UnicodeConverter.php">UnicodeConverter.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">53</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Check if a string contains Unicode characters represented by escape sequences.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">containsUnicodeCharacters</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$str</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"><p>Unicode characters can be represented in PHP strings using escape sequences like \uXXXX.
+This function checks if the input string contains any Unicode characters.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$str</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The input string to check.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Returns true if the string contains Unicode characters, false otherwise.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_convert">
         convert()
         <a href="classes/CNIC-IDNA-Converter-UnicodeConverter.html#method_convert" class="headerlink"><i class="fas fa-link"></i></a>
@@ -296,7 +353,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/IDNA/Converter/UnicodeConverter.php"><a href="files/src-idna-converter-unicodeconverter.html"><abbr title="src/IDNA/Converter/UnicodeConverter.php">UnicodeConverter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">65</span>
 
     </aside>
 
