@@ -22,6 +22,7 @@
                     "HISTORY.md",
                     "@(package?(-lock)|composer).json",
                     "report",
+                    "docs",
                     "src"
                 ]
             }

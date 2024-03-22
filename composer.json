@@ -1,6 +1,6 @@
 {
-    "name": "centralnicgroup-opensource/rtldev-middleware-php-idna-translator",
-    "description": "PHP IDNA Translator library",
+    "name": "centralnic-reseller/idn-converter",
+    "description": "PHP library to convert Domain Names correctly from IDN to Punycode, and vice-versa also offers TR46 processing.",
     "type": "library",
     "license": "MIT",
     "require-dev": {
