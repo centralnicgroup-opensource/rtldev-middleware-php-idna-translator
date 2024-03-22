@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1711037836">
-  <project timestamp="1711037836">
+<coverage generated="1711110954">
+  <project timestamp="1711110954">
     <file name="/home/asifnawaz/git/rtldev-middleware-php-idna-translator/src/IDNA/Converter/ASCIIConverter.php">
       <class name="CNIC\IDNA\Converter\ASCIIConverter" namespace="global">
         <metrics complexity="4" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="6" elements="12" coveredelements="6"/>
