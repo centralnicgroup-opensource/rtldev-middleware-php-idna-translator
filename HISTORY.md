@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.0...v1.0.1) (2024-03-22)
+
+
+### Bug Fixes
+
+* **.gitattributes:** patches issue where GitHub changes repository to the wrong language ([7dfa4ff](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/commit/7dfa4ff65e5ab9f69b403688729b3a0f38630c2c))
+
 # 1.0.0 (2024-03-22)
 
 
