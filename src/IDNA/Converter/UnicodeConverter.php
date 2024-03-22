@@ -36,9 +36,24 @@ class UnicodeConverter implements ConversionInterface
     public static function check($keyword)
     {
         return mb_ereg(
-            '[^\x00-\x7F\x{FF00}-\x{FFFF}]|\\\\u[0-9A-Fa-f]{4}',
+            '[^\x00-\x7F\x{FF00}-\x{FFFF}]',
             $keyword
         ) !== false; // Check if keyword contains non-ASCII characters
+    }
+
+    /**
+     * Check if a string contains Unicode characters represented by escape sequences.
+     *
+     * Unicode characters can be represented in PHP strings using escape sequences like \uXXXX.
+     * This function checks if the input string contains any Unicode characters.
+     *
+     * @param string $str The input string to check.
+     * @return bool Returns true if the string contains Unicode characters, false otherwise.
+     */
+    public static function containsUnicodeCharacters($str)
+    {
+        // Check for Unicode characters
+        return preg_match('/[\x{0080}-\x{10FFFF}]/u', self::decode($str)) !== false;
     }
 
     /**

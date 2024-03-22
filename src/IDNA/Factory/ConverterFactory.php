@@ -56,8 +56,13 @@ class ConverterFactory
         } else {
             $domainArray = explode(".", trim($keyword));
             $options["domain"] = $keyword;
+
             foreach ($domainArray as &$tmpKeyword) {
-                if (ASCIIConverter::check($tmpKeyword) || UnicodeConverter::check($tmpKeyword)) {
+                if (ASCIIConverter::check($tmpKeyword)) {
+                    $tmpKeyword = UnicodeConverter::convert($tmpKeyword, $options);
+                }
+                if (UnicodeConverter::containsUnicodeCharacters($tmpKeyword)) {
+                    $tmpKeyword = UnicodeConverter::decode($tmpKeyword);
                     $tmpKeyword = UnicodeConverter::convert($tmpKeyword, $options);
                 }
             }
@@ -112,11 +117,21 @@ class ConverterFactory
             }
         }
 
-        if (ASCIIConverter::check($keyword) || UnicodeConverter::check($keyword)) {
-            return UnicodeConverter::convert($keyword, $options);
+        $tmpKeyword = $keyword;
+        if (UnicodeConverter::containsUnicodeCharacters($tmpKeyword)) {
+            $tmpKeyword = UnicodeConverter::decode($tmpKeyword);
+            $tmpKeyword = UnicodeConverter::convert($tmpKeyword, $options);
         }
-
-        return $keyword;
+        if ($method === "toASCII") {
+            if (UnicodeConverter::check($tmpKeyword)) {
+                $tmpKeyword = ASCIIConverter::convert($tmpKeyword, $options);
+            }
+        } else {
+            if (ASCIIConverter::check($tmpKeyword)) {
+                $tmpKeyword = UnicodeConverter::convert($tmpKeyword, $options);
+            }
+        }
+        return $tmpKeyword;
     }
 
     /**
