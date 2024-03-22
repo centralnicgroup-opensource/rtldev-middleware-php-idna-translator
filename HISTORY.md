@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.0...v1.0.1) (2024-03-22)
+
+
+### Bug Fixes
+
+* **idna translator:** Reviewed coverage configs and report ([e1f086d](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/commit/e1f086dc299c9a3c9da80ba4cec3fdf6f630acf5))
+
 # 1.0.0 (2024-03-21)
 
 
