@@ -1,17 +1,16 @@
 <?php
-include ('lib/IDNATranslator.php');
+include ('vendor/autoload.php');
 
-use CNIC\IDNA\IDNATranslator;
-
+use CNIC\IDNA\Factory\ConverterFactory;
 
 // Example 1: Domain with ASCII characters
-$domain = 'faß.de';
-$result = IDNATranslator::convert($domain, ["transitionalProcessing" => false]);
+$domain = 'ＡＢＣ・日本.co.jp';
+$result = ConverterFactory::convert($domain, ["transitionalProcessing" => false]);
 print_r($result);
 echo "\n";
 
 // Example 2: Convert to unicode
 $domain = '日本｡co｡jp';
-$result = IDNATranslator::toUnicode($domain);
+$result = ConverterFactory::toUnicode($domain);
 print_r($result);
 echo "\n";
