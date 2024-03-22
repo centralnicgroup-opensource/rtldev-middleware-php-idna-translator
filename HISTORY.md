@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.2...v1.0.3) (2024-03-22)
+
+
+### Bug Fixes
+
+* **composer.json:** archive unnecessary files from package ([1dc5c8a](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/commit/1dc5c8a4436c34a7b6ab7fb29c5e6171e0065e4e))
+
 ## [1.0.2](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.1...v1.0.2) (2024-03-22)
 
 
