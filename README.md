@@ -85,5 +85,6 @@ Converts a domain string to Punycode format.
   - `$keyword` (string): The domain string to convert.
   - `$options` (array): Additional options for the conversion process (optional).
 - **Returns:** The converted domain in Punycode format, or `false` if the keyword is empty.
+```
 
 **License:** This library is distributed under the MIT License, allowing for flexibility in usage and modification.
