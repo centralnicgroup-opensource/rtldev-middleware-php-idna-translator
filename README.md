@@ -1,4 +1,4 @@
-# ConverterFactory
+# IDN Converter - Convert IDN to Punycode or Punycode to IDN - PHP Library
 
 The `ConverterFactory` class provides functionality for converting domain strings between Unicode and Punycode formats.
 

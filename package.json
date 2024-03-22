@@ -7,16 +7,15 @@
     "node": ">=20.6.1"
   },
   "keywords": [
-    "idna",
-    "converter",
-    "idna",
+    "php idn converter",
+    "php idna",
+    "php idna",
     "domains",
     "convert",
     "to",
     "punycode",
     "covert",
     "to",
-    "idna",
     "idna",
     "php",
     "library"
