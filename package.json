@@ -1,5 +1,5 @@
 {
-  "name": "rtldev-middleware-php-idna-translator",
+  "name": "php-idn-converter",
   "version": "0.0.0-development",
   "description": "PHP IDNA Translator to convert IDNA domains to Unicode and ASCII (IDN and Punycode)",
   "license": "MIT",
