@@ -13,29 +13,24 @@ class ConverterFactory
      * @param string|array $keywords The domain string to convert.
      * @param array $options Additional options for the conversion process.
      * @return array Returns an associative array containing the converted domain in both IDN and Punycode formats.
-     * @throws \InvalidArgumentException Throws an exception if the domain string is empty.
      */
     public static function convert($keywords, $options = [])
     {
-        if (empty($keywords)) {
-            throw new \InvalidArgumentException('Input parameters are missing.');
+        if (!is_array($keywords)) {
+            return [
+                "idn" => self::toUnicode($keywords, $options),
+                "punycode" => self::toASCII($keywords, $options)
+            ];
         }
 
-        if (is_array($keywords)) {
-            $translatedKeywords = [];
+        $translatedKeywords = [];
 
-            foreach ($keywords as $idx => $keyword) {
-                $translatedKeywords[$idx]["IDN"] = self::toUnicode($keyword, $options);
-                $translatedKeywords[$idx]["PUNYCODE"] = self::toASCII($keyword, $options);
-            }
-
-            return $translatedKeywords;
+        foreach ($keywords as $idx => $keyword) {
+            $translatedKeywords[$idx]["idn"] = self::toUnicode($keyword, $options);
+            $translatedKeywords[$idx]["punycode"] = self::toASCII($keyword, $options);
         }
 
-        $translatedKeyword["IDN"] = self::toUnicode($keywords, $options);
-        $translatedKeyword["PUNYCODE"] = self::toASCII($keywords, $options);
-
-        return $translatedKeyword;
+        return $translatedKeywords;
     }
 
     /**

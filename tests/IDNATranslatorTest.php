@@ -109,16 +109,16 @@ class IDNATranslatorTest extends TestCase
     public function testConvert()
     {
         $result = ConverterFactory::convert('münchen.de');
-        $this->assertEquals(['IDN' => 'münchen.de', 'PUNYCODE' => 'xn--mnchen-3ya.de'], $result);
+        $this->assertEquals(['idn' => 'münchen.de', 'punycode' => 'xn--mnchen-3ya.de'], $result);
 
         $result = ConverterFactory::convert('xn--mnchen-3ya.de');
-        $this->assertEquals(['IDN' => 'münchen.de', 'PUNYCODE' => 'xn--mnchen-3ya.de'], $result);
+        $this->assertEquals(['idn' => 'münchen.de', 'punycode' => 'xn--mnchen-3ya.de'], $result);
 
         $result = ConverterFactory::convert('🌐.ws');
-        $this->assertEquals(['IDN' => '🌐.ws', 'PUNYCODE' => 'xn--wg8h.ws'], $result);
+        $this->assertEquals(['idn' => '🌐.ws', 'punycode' => 'xn--wg8h.ws'], $result);
 
         $result = ConverterFactory::convert('xn--wg8h.ws');
-        $this->assertEquals(['IDN' => '🌐.ws', 'PUNYCODE' => 'xn--wg8h.ws'], $result);
+        $this->assertEquals(['idn' => '🌐.ws', 'punycode' => 'xn--wg8h.ws'], $result);
     }
 
     public function testConvertBulk()
@@ -139,21 +139,21 @@ class IDNATranslatorTest extends TestCase
         $convertedDomains = ConverterFactory::convert($domains);
 
         // Check if the converted domains have the correct values
-        $this->assertEquals(['IDN' => 'münchen.de', 'PUNYCODE' => 'xn--mnchen-3ya.de'], $convertedDomains[0]);
-        $this->assertEquals(['IDN' => 'münchen.de', 'PUNYCODE' => 'xn--mnchen-3ya.de'], $convertedDomains[1]);
-        $this->assertEquals(['IDN' => '🌐.ws', 'PUNYCODE' => 'xn--wg8h.ws'], $convertedDomains[2]);
-        $this->assertEquals(['IDN' => '🌐.ws', 'PUNYCODE' => 'xn--wg8h.ws'], $convertedDomains[3]);
-        $this->assertEquals(['IDN' => '😊.com', 'PUNYCODE' => 'xn--o28h.com'], $convertedDomains[4]);
-        $this->assertEquals(['IDN' => '😊.com', 'PUNYCODE' => 'xn--o28h.com'], $convertedDomains[5]);
-        $this->assertEquals(['IDN' => '🎉.net', 'PUNYCODE' => 'xn--dk8h.net'], $convertedDomains[6]);
-        $this->assertEquals(['IDN' => '🎉.net', 'PUNYCODE' => 'xn--dk8h.net'], $convertedDomains[7]);
+        $this->assertEquals(['idn' => 'münchen.de', 'punycode' => 'xn--mnchen-3ya.de'], $convertedDomains[0]);
+        $this->assertEquals(['idn' => 'münchen.de', 'punycode' => 'xn--mnchen-3ya.de'], $convertedDomains[1]);
+        $this->assertEquals(['idn' => '🌐.ws', 'punycode' => 'xn--wg8h.ws'], $convertedDomains[2]);
+        $this->assertEquals(['idn' => '🌐.ws', 'punycode' => 'xn--wg8h.ws'], $convertedDomains[3]);
+        $this->assertEquals(['idn' => '😊.com', 'punycode' => 'xn--o28h.com'], $convertedDomains[4]);
+        $this->assertEquals(['idn' => '😊.com', 'punycode' => 'xn--o28h.com'], $convertedDomains[5]);
+        $this->assertEquals(['idn' => '🎉.net', 'punycode' => 'xn--dk8h.net'], $convertedDomains[6]);
+        $this->assertEquals(['idn' => '🎉.net', 'punycode' => 'xn--dk8h.net'], $convertedDomains[7]);
     }
 
     // Test cases for conversion from IDN to Punycode
-    public function testIdnToPunycodeConversion()
+    public function testidnToPunycodeConversion()
     {
         foreach (self::$data['convert'] as $idn => $punycode) {
-            $this->assertEquals($punycode, ConverterFactory::convert($idn)['PUNYCODE']);
+            $this->assertEquals($punycode, ConverterFactory::convert($idn)['punycode']);
         }
     }
 
