@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.2...v1.0.3) (2024-03-25)
+
+
+### Bug Fixes
+
+* **converterfactory.php:** reviewed convert function for code optimisation ([92ccf4e](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/commit/92ccf4ecd3d63d9ae20fa3c459c72f58acb98021))
+
 ## [1.0.2](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.1...v1.0.2) (2024-03-22)
 
 
