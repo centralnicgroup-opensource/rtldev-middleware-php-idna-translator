@@ -10,12 +10,6 @@
             }
         ],
         [
-            "@semantic-release/exec",
-            {
-                "successCmd": "gulp publishNotification --update \"${nextRelease.version}\" --type \"${nextRelease.type}\" --notes \"${encodeURIComponent(nextRelease.notes)}\""
-            }
-        ],
-        [
             "@semantic-release/git",
             {
                 "assets": [
@@ -27,6 +21,7 @@
                 ]
             }
         ],
+        "semantic-release-teams-notify-plugin",
         "@semantic-release/github"
     ]
 }
