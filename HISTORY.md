@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.3...v1.0.4) (2024-07-25)
+
+
+### Performance Improvements
+
+* **converterfactory.php:** include '.art' TLD in pattern matching for transitional processing ([057d2bf](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/commit/057d2bf77d3ba2812e794323ece86b9b57383492))
+
 ## [1.0.3](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.2...v1.0.3) (2024-03-25)
 
 
