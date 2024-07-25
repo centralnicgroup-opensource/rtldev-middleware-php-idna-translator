@@ -142,6 +142,6 @@ class ConverterFactory
             return $options["transitionalProcessing"];
         }
 
-        return mb_ereg("\./(be|ca|de|fr|pm|re|swiss|tf|wf|yt)\.?$/i", $options["domain"] ?? $keyword) !== false;
+        return mb_ereg("\./(art|be|ca|de|fr|pm|re|swiss|tf|wf|yt)\.?$/i", $options["domain"] ?? $keyword) !== false;
     }
 }
