@@ -4,7 +4,7 @@
   "description": "PHP IDNA Translator to convert IDNA domains to Unicode and ASCII (IDN and Punycode)",
   "license": "MIT",
   "engines": {
-    "node": ">=20.6.1"
+    "node": "^24.10.0"
   },
   "keywords": [
     "php idn converter",
@@ -42,7 +42,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "semantic-release": "^24.2.9",
+    "semantic-release": "^25.0.1",
     "semantic-release-teams-notify-plugin": "github:centralnicgroup-opensource/rtldev-middleware-semantic-release-notify-plugin"
   }
 }
