@@ -4,6 +4,9 @@ vendor
 report
 docs
 node_modules
+package-lock.json
+yarn.lock
+.pnpm-store
 composer.lock
 build/api-cache
 .phpunit.result.cache
