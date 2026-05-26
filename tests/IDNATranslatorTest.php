@@ -10,7 +10,7 @@ class IDNATranslatorTest extends TestCase
     private static $data = [
         'convert' => [
             'öbb.at' => 'xn--bb-eka.at',
-            'faß.de' => 'fass.de',
+            'faß.de' => 'xn--fa-hia.de',
         ],
         'toAscii' => [
             '' => '',
@@ -39,7 +39,7 @@ class IDNATranslatorTest extends TestCase
             'xn--fa-hia.de' => 'xn--fa-hia.de',
             'σόλος.gr' => 'xn--wxaijb9b.gr',
             'Σόλος.gr' => 'xn--wxaijb9b.gr',
-            'ΣΌΛΟΣ.grﻋﺮﺑﻲ.de' => 'xn--wxaikc6b.xn--gr-gtd9a1b0g.de',
+            'ΣΌΛΟΣ.grﻋﺮﺑﻲ.de' => 'xn--wxaijb9b.xn--gr-gtd9a1b0g.de',
             'نامه\u200Cای.de' => 'xn--mgba3gch31f060k.de',
         ],
         'toAsciiWithoutTransitional' => [
@@ -99,7 +99,7 @@ class IDNATranslatorTest extends TestCase
             'x\u0301\u0327.de' => 'x̧́.de',
             'σόλος.gr' => 'σόλος.gr',
             'Σόλος.gr' => 'σόλος.gr',
-            'ΣΌΛΟΣ.grﻋﺮﺑﻲ.de' => 'σόλοσ.grعربي.de',
+            'ΣΌΛΟΣ.grﻋﺮﺑﻲ.de' => 'σόλος.grعربي.de',
             'عربي.de' => 'عربي.de',
             'نامهای.de' => 'نامهای.de',
             'نامه\u200Cای.de' => 'نامه‌ای.de',
@@ -208,6 +208,42 @@ class IDNATranslatorTest extends TestCase
                 \nWithout transition: " . $withoutTransition
             );
         }
+    }
+
+    public function testTransitionalProcessingAutoDetection()
+    {
+        $nonTransitionalDomains = [
+            'example.art',
+            'example.be',
+            'example.ca',
+            'example.de',
+            'EXAMPLE.FR',
+            'example.pm',
+            'example.re',
+            'example.swiss',
+            'example.tf',
+            'example.wf',
+            'example.yt',
+            'example.de.',
+        ];
+
+        foreach ($nonTransitionalDomains as $domain) {
+            $this->assertTrue(ConverterFactory::transitionalProcessing($domain), $domain);
+        }
+
+        $transitionalDomains = [
+            'example.com',
+            'example.de.com',
+            'ääkköstestitilaus.online',
+            'ääkköstestitilaus.store',
+            'ääkköstestitilaus.site',
+        ];
+
+        foreach ($transitionalDomains as $domain) {
+            $this->assertFalse(ConverterFactory::transitionalProcessing($domain), $domain);
+        }
+
+        $this->assertTrue(ConverterFactory::transitionalProcessing('münchen', ['domain' => 'münchen.de']));
     }
 
     // Test cases for converting domain names to Unicode
