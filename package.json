@@ -3,7 +3,6 @@
   "version": "0.0.0-development",
   "description": "PHP IDNA Translator to convert IDNA domains to Unicode and ASCII (IDN and Punycode)",
   "license": "MIT",
-  "packageManager": "pnpm@10.26.0",
   "engines": {
     "node": "^24.10.0"
   },
