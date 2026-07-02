@@ -1,18 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace CNIC\IDNA\Converter;
 
 use CNIC\IDNA\Factory\ConverterFactory;
 
-class ASCIIConverter implements ConversionInterface
+final class ASCIIConverter implements ConversionInterface
 {
     /**
      * Convert the keyword to ASCII format.
      *
      * @param string $keyword The keyword to convert
-     * @return string Returns the Punycode representation of the keyword
+     * @param array<string, mixed> $options Additional options for the conversion process
+     * @return string Returns the Punycode representation of the keyword, or the original keyword if conversion fails
      */
-    public static function convert($keyword, $options)
+    #[\Override]
+    public static function convert(string $keyword, array $options): string
     {
         $transitionalProcessing = ConverterFactory::transitionalProcessing($keyword, $options);
 
@@ -23,10 +27,7 @@ class ASCIIConverter implements ConversionInterface
             INTL_IDNA_VARIANT_UTS46
         );
 
-        if ($punycode !== false) {
-            return $punycode; // If successful, return the Punycode representation
-        }
-        return $keyword; // If conversion fails, return the normalized keyword
+        return $punycode !== false ? $punycode : $keyword;
     }
 
     /**
@@ -35,8 +36,9 @@ class ASCIIConverter implements ConversionInterface
      * @param string $keyword The keyword to check
      * @return bool True if the keyword is in Punycode format, false otherwise
      */
-    public static function check($keyword)
+    #[\Override]
+    public static function check(string $keyword): bool
     {
-        return mb_ereg('^xn--', $keyword) !== false; // Check if keyword starts with "xn--"
+        return str_starts_with($keyword, "xn--");
     }
 }

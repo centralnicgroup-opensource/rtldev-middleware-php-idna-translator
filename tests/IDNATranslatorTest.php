@@ -1,13 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace CNIC\IDNA\Tests;
 
-use PHPUnit\Framework\TestCase;
 use CNIC\IDNA\Factory\ConverterFactory;
+use PHPUnit\Framework\TestCase;
 
-class IDNATranslatorTest extends TestCase
+final class IDNATranslatorTest extends TestCase
 {
-    private static $data = [
+    /** @var array<string, array<string, string>> */
+    private static array $data = [
         'convert' => [
             'öbb.at' => 'xn--bb-eka.at',
             'faß.de' => 'xn--fa-hia.de',
@@ -68,6 +71,7 @@ class IDNATranslatorTest extends TestCase
             'نامهای.de' => 'xn--mgba3gch31f.de',
         ],
         'toUnicode' => [
+            '' => '',
             'öbb.at' => 'öbb.at',
             'Öbb.at' => 'öbb.at',
             'ÖBB.at' => 'öbb.at',
@@ -106,7 +110,7 @@ class IDNATranslatorTest extends TestCase
         ],
     ];
 
-    public function testConvert()
+    public function testConvert(): void
     {
         $result = ConverterFactory::convert('münchen.de');
         $this->assertEquals(['idn' => 'münchen.de', 'punycode' => 'xn--mnchen-3ya.de'], $result);
@@ -121,7 +125,7 @@ class IDNATranslatorTest extends TestCase
         $this->assertEquals(['idn' => '🌐.ws', 'punycode' => 'xn--wg8h.ws'], $result);
     }
 
-    public function testConvertBulk()
+    public function testConvertBulk(): void
     {
         // Define an array of domain names to test
         $domains = [
@@ -150,7 +154,7 @@ class IDNATranslatorTest extends TestCase
     }
 
     // Test cases for conversion from IDN to Punycode
-    public function testidnToPunycodeConversion()
+    public function testidnToPunycodeConversion(): void
     {
         foreach (self::$data['convert'] as $idn => $punycode) {
             $this->assertEquals($punycode, ConverterFactory::convert($idn)['punycode']);
@@ -158,7 +162,7 @@ class IDNATranslatorTest extends TestCase
     }
 
     // Test cases for converting domain names to Punycode
-    public function testToASCII()
+    public function testToASCII(): void
     {
         foreach (self::$data['toAscii'] as $input => $output) {
             $this->assertEquals($output, ConverterFactory::toASCII(
@@ -169,7 +173,7 @@ class IDNATranslatorTest extends TestCase
     }
 
     // Test cases for converting Transitional domain names to Punycode
-    public function testToASCIIWithTransitional()
+    public function testToASCIIWithTransitional(): void
     {
         foreach (self::$data['toAsciiWithTransitional'] as $input => $output) {
             $withTransition = ConverterFactory::toASCII(
@@ -183,13 +187,14 @@ class IDNATranslatorTest extends TestCase
             $this->assertEquals(
                 $output,
                 $withTransition,
-                "\nInput: {$input}\nWith transition: " . $withTransition . "\nWithout transition: " . $withoutTransition
+                "\nInput: {$input}\nWith transition: " . var_export($withTransition, true)
+                    . "\nWithout transition: " . var_export($withoutTransition, true)
             );
         }
     }
 
     // Test cases for converting Transitional domain names to Punycode
-    public function testToASCIIWithoutTransitional()
+    public function testToASCIIWithoutTransitional(): void
     {
         foreach (self::$data['toAsciiWithoutTransitional'] as $input => $output) {
             $withTransition = ConverterFactory::toASCII(
@@ -203,14 +208,14 @@ class IDNATranslatorTest extends TestCase
             $this->assertEquals(
                 $output,
                 $withoutTransition,
-                "\nInput: {$input}
-                \nWith transition: " . $withTransition . "
-                \nWithout transition: " . $withoutTransition
+                "\nInput: {$input}"
+                    . "\nWith transition: " . var_export($withTransition, true)
+                    . "\nWithout transition: " . var_export($withoutTransition, true)
             );
         }
     }
 
-    public function testTransitionalProcessingAutoDetection()
+    public function testTransitionalProcessingAutoDetection(): void
     {
         $nonTransitionalDomains = [
             'example.art',
@@ -247,7 +252,7 @@ class IDNATranslatorTest extends TestCase
     }
 
     // Test cases for converting domain names to Unicode
-    public function testToUnicode()
+    public function testToUnicode(): void
     {
         foreach (self::$data['toUnicode'] as $input => $output) {
             $this->assertEquals(
@@ -256,5 +261,14 @@ class IDNATranslatorTest extends TestCase
                 "{$input} : {$output}"
             );
         }
+    }
+
+    // Single-label (no TLD) keyword whose escaped Unicode decodes to characters
+    // that still need Unicode-to-Punycode conversion, exercising the toASCII
+    // branch of ConverterFactory::handleConversion() taken when the keyword
+    // has no "." at all.
+    public function testToASCIISingleLabelWithEscapedUnicode(): void
+    {
+        $this->assertEquals('xn--ls8h', ConverterFactory::toASCII('💩'));
     }
 }

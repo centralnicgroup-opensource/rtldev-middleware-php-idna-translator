@@ -15,7 +15,7 @@
                 "assets": [
                     "HISTORY.md",
                     "@(package?(-lock)|composer).json",
-                    "report",
+                    "reports",
                     "docs",
                     "src"
                 ]

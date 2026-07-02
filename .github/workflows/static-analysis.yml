@@ -1,0 +1,39 @@
+name: Static Analysis
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  static-analysis:
+    name: Lint, Rector, Test & Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: intl, mbstring, json
+          coverage: pcov
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Lint (PHPCS / PHPStan level 9 / Psalm level 1 / ShellCheck)
+        run: composer lint
+
+      - name: Automated refactoring check (Rector dry-run)
+        run: composer rector
+
+      - name: Test
+        run: composer test
+
+      - name: Coverage report
+        run: composer coverage
