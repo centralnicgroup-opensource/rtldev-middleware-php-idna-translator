@@ -10,6 +10,11 @@ The IDN Converter PHP Library provides a simple and efficient solution for conve
 
 **Get Started:** Install the library via Composer and follow the usage examples in the README to start converting domain strings efficiently in your PHP projects.
 
+## Requirements
+
+- PHP 8.3 or higher
+- `ext-intl`, `ext-mbstring` and `ext-json`
+
 ## Installation
 
 You can install the IDN Converter PHP Library via Composer. Run the following command in your terminal:
@@ -59,9 +64,9 @@ use CNIC\IDNA\Factory\ConverterFactory;
 
 // Convert multiple domain strings to Unicode and Punycode formats
 $domains = ["example.com", "münchen.de", "рф.ru"];
-$convertedDomains = ConverterFactory::convert($domains);
+$convertedDomains = ConverterFactory::convertBulk($domains);
 foreach ($convertedDomains as $domain) {
-    echo "Unicode Domain: {$domain['IDN']}, Punycode Domain: {$domain['PUNYCODE']}\n";
+    echo "Unicode Domain: {$domain['idn']}, Punycode Domain: {$domain['punycode']}\n";
 }
 ```
 
@@ -85,6 +90,40 @@ Converts a domain string to Punycode format.
   - `$keyword` (string): The domain string to convert.
   - `$options` (array): Additional options for the conversion process (optional).
 - **Returns:** The converted domain in Punycode format, or `false` if the keyword is empty.
+
+### `ConverterFactory::convert($keywords, $options = [])`
+
+Converts a single domain string (or a list of domain strings) to both Unicode and Punycode formats.
+
+- **Parameters:**
+  - `$keywords` (string|array): The domain string, or a list of domain strings, to convert.
+  - `$options` (array): Additional options for the conversion process (optional).
+- **Returns:** An array with `idn` and `punycode` entries; for a list input, one such array per input keyword, keyed like the input.
+
+### `ConverterFactory::convertBulk($keywords, $options = [])`
+
+Converts a list of domain strings to both Unicode and Punycode formats, preserving the input keys.
+
+- **Parameters:**
+  - `$keywords` (array): The domain strings to convert.
+  - `$options` (array): Additional options for the conversion process (optional).
+- **Returns:** One array with `idn` and `punycode` entries per input keyword, keyed like the input.
 ```
+
+## Development
+
+After cloning the repository, install the dev dependencies with `composer install`. The following Composer scripts are available:
+
+| Script | Description |
+| --- | --- |
+| `composer phpcs` | Check coding style against PSR-12 with PHP_CodeSniffer |
+| `composer codefix` | Automatically fix coding style violations |
+| `composer phpstan` | Run PHPStan static analysis (level 8) |
+| `composer psalm` | Run Psalm static analysis (level 2) |
+| `composer lint` | Run PHPCS, PHPStan and Psalm together |
+| `composer rector` | Preview the changes Rector would make, without applying them |
+| `composer rector:fix` | Apply automated modernization rules with Rector |
+| `composer test` | Run the PHPUnit test suite |
+| `composer coverage` | Run the test suite with HTML coverage output |
 
 **License:** This library is distributed under the MIT License, allowing for flexibility in usage and modification.
