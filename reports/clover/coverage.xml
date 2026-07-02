@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1783010607">
+  <project timestamp="1783010607" name="Clover Coverage">
+    <package name="CNIC\IDNA\Converter">
+      <file name="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/src/IDNA/Converter/ASCIIConverter.php">
+        <class name="CNIC\IDNA\Converter\ASCIIConverter" namespace="CNIC\IDNA\Converter">
+          <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+        </class>
+        <line num="18" type="method" name="convert" visibility="public" complexity="3" crap="3" count="7"/>
+        <line num="21" type="stmt" count="7"/>
+        <line num="24" type="stmt" count="7"/>
+        <line num="25" type="stmt" count="7"/>
+        <line num="26" type="stmt" count="7"/>
+        <line num="27" type="stmt" count="7"/>
+        <line num="28" type="stmt" count="7"/>
+        <line num="30" type="stmt" count="7"/>
+        <line num="39" type="method" name="check" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="42" type="stmt" count="4"/>
+        <metrics loc="45" ncloc="31" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+      </file>
+      <file name="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/src/IDNA/Converter/UnicodeConverter.php">
+        <class name="CNIC\IDNA\Converter\UnicodeConverter" namespace="CNIC\IDNA\Converter">
+          <metrics complexity="7" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="18" coveredelements="18"/>
+        </class>
+        <line num="18" type="method" name="convert" visibility="public" complexity="3" crap="3" count="7"/>
+        <line num="21" type="stmt" count="7"/>
+        <line num="23" type="stmt" count="7"/>
+        <line num="24" type="stmt" count="7"/>
+        <line num="25" type="stmt" count="7"/>
+        <line num="26" type="stmt" count="7"/>
+        <line num="27" type="stmt" count="7"/>
+        <line num="29" type="stmt" count="7"/>
+        <line num="38" type="method" name="check" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="42" type="stmt" count="8"/>
+        <line num="43" type="stmt" count="8"/>
+        <line num="44" type="stmt" count="8"/>
+        <line num="45" type="stmt" count="8"/>
+        <line num="57" type="method" name="containsUnicodeCharacters" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="60" type="stmt" count="6"/>
+        <line num="69" type="method" name="decode" visibility="public" complexity="2" crap="2" count="8"/>
+        <line num="71" type="stmt" count="8"/>
+        <line num="74" type="stmt" count="8"/>
+        <metrics loc="77" ncloc="46" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="18" coveredelements="18"/>
+      </file>
+    </package>
+    <file name="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/src/IDNA/Converter/ConversionInterface.php">
+      <metrics loc="16" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="CNIC\IDNA\Factory">
+      <file name="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/src/IDNA/Factory/ConverterFactory.php">
+        <class name="CNIC\IDNA\Factory\ConverterFactory" namespace="CNIC\IDNA\Factory">
+          <metrics complexity="28" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="65" coveredstatements="65" elements="71" coveredelements="71"/>
+        </class>
+        <line num="23" type="method" name="convert" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="25" type="stmt" count="3"/>
+        <line num="26" type="stmt" count="2"/>
+        <line num="27" type="stmt" count="2"/>
+        <line num="28" type="stmt" count="2"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="47" type="method" name="convertBulk" visibility="public" complexity="2" crap="2" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="52" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="55" type="stmt" count="1"/>
+        <line num="58" type="stmt" count="1"/>
+        <line num="70" type="method" name="toUnicode" visibility="public" complexity="6" crap="6" count="4"/>
+        <line num="72" type="stmt" count="4"/>
+        <line num="73" type="stmt" count="1"/>
+        <line num="76" type="stmt" count="4"/>
+        <line num="77" type="stmt" count="1"/>
+        <line num="80" type="stmt" count="4"/>
+        <line num="81" type="stmt" count="4"/>
+        <line num="83" type="stmt" count="4"/>
+        <line num="84" type="stmt" count="4"/>
+        <line num="85" type="stmt" count="3"/>
+        <line num="87" type="stmt" count="4"/>
+        <line num="88" type="stmt" count="4"/>
+        <line num="89" type="stmt" count="4"/>
+        <line num="92" type="stmt" count="4"/>
+        <line num="94" type="stmt" count="4"/>
+        <line num="106" type="method" name="toASCII" visibility="public" complexity="5" crap="5" count="7"/>
+        <line num="108" type="stmt" count="7"/>
+        <line num="109" type="stmt" count="1"/>
+        <line num="112" type="stmt" count="7"/>
+        <line num="113" type="stmt" count="3"/>
+        <line num="116" type="stmt" count="6"/>
+        <line num="117" type="stmt" count="6"/>
+        <line num="119" type="stmt" count="6"/>
+        <line num="120" type="stmt" count="6"/>
+        <line num="121" type="stmt" count="6"/>
+        <line num="122" type="stmt" count="6"/>
+        <line num="125" type="stmt" count="6"/>
+        <line num="127" type="stmt" count="6"/>
+        <line num="138" type="method" name="handleConversion" visibility="private" complexity="9" crap="9" count="4"/>
+        <line num="140" type="stmt" count="4"/>
+        <line num="141" type="stmt" count="4"/>
+        <line num="142" type="stmt" count="4"/>
+        <line num="143" type="stmt" count="3"/>
+        <line num="145" type="stmt" count="3"/>
+        <line num="146" type="stmt" count="2"/>
+        <line num="147" type="stmt" count="3"/>
+        <line num="151" type="stmt" count="3"/>
+        <line num="152" type="stmt" count="3"/>
+        <line num="153" type="stmt" count="2"/>
+        <line num="154" type="stmt" count="2"/>
+        <line num="156" type="stmt" count="3"/>
+        <line num="157" type="stmt" count="2"/>
+        <line num="158" type="stmt" count="1"/>
+        <line num="160" type="stmt" count="1"/>
+        <line num="161" type="stmt" count="1"/>
+        <line num="164" type="stmt" count="3"/>
+        <line num="176" type="method" name="transitionalProcessing" visibility="public" complexity="4" crap="4" count="9"/>
+        <line num="178" type="stmt" count="9"/>
+        <line num="179" type="stmt" count="4"/>
+        <line num="182" type="stmt" count="5"/>
+        <line num="183" type="stmt" count="4"/>
+        <line num="184" type="stmt" count="2"/>
+        <line num="186" type="stmt" count="5"/>
+        <line num="187" type="stmt" count="5"/>
+        <line num="188" type="stmt" count="5"/>
+        <line num="189" type="stmt" count="5"/>
+        <metrics loc="192" ncloc="134" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="65" coveredstatements="65" elements="71" coveredelements="71"/>
+      </file>
+    </package>
+    <metrics files="4" loc="330" ncloc="224" classes="3" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="87" coveredstatements="87" elements="99" coveredelements="99"/>
+  </project>
+</coverage>

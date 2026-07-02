@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.5...v2.0.0) (2026-07-02)
+
+
+### Code Refactoring
+
+* **php:** require PHP 8.3, add strict types and static analysis tooling ([61b8446](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/commit/61b844686a98a386d5fb31bef5ec67cd1dd3e269))
+
+
+### BREAKING CHANGES
+
+* **php:** minimum PHP version raised from 7.4 to 8.3.
+
 ## [1.0.5](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.4...v1.0.5) (2026-05-28)
 
 

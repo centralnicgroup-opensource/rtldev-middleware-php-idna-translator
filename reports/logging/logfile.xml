@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/phpunit.xml.dist" tests="9" assertions="114" errors="0" failures="0" skipped="0" time="0.075857">
+    <testsuite name="IDNA Translator" tests="9" assertions="114" errors="0" failures="0" skipped="0" time="0.075857">
+      <testsuite name="CNIC\IDNA\Tests\IDNATranslatorTest" file="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" tests="9" assertions="114" errors="0" failures="0" skipped="0" time="0.075857">
+        <testcase name="testConvert" file="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="113" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="4" time="0.057546"/>
+        <testcase name="testConvertBulk" file="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="128" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="8" time="0.002465"/>
+        <testcase name="testidnToPunycodeConversion" file="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="157" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="2" time="0.001947"/>
+        <testcase name="testToASCII" file="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="165" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="4" time="0.002342"/>
+        <testcase name="testToASCIIWithTransitional" file="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="176" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="22" time="0.002776"/>
+        <testcase name="testToASCIIWithoutTransitional" file="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="197" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="23" time="0.002707"/>
+        <testcase name="testTransitionalProcessingAutoDetection" file="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="218" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="18" time="0.001879"/>
+        <testcase name="testToUnicode" file="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="255" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="32" time="0.002559"/>
+        <testcase name="testToASCIISingleLabelWithEscapedUnicode" file="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/tests/IDNATranslatorTest.php" line="270" class="CNIC\IDNA\Tests\IDNATranslatorTest" classname="CNIC.IDNA.Tests.IDNATranslatorTest" assertions="1" time="0.001637"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

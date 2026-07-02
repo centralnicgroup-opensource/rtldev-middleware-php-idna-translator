@@ -56,36 +56,6 @@ Search.appendIndex(
             "summary": "Convert\u0020Unicode\u0020escape\u0020sequences\u0020to\u0020their\u0020corresponding\u0020characters.",
             "url": "classes/CNIC-IDNA-Converter-UnicodeConverter.html#method_decode"
         },                {
-            "fqsen": "\\CNIC\\IDNA\\Factory\\ConverterFactory",
-            "name": "ConverterFactory",
-            "summary": "",
-            "url": "classes/CNIC-IDNA-Factory-ConverterFactory.html"
-        },                {
-            "fqsen": "\\CNIC\\IDNA\\Factory\\ConverterFactory\u003A\u003Aconvert\u0028\u0029",
-            "name": "convert",
-            "summary": "Convert\u0020a\u0020domain\u0020string\u0020between\u0020Unicode\u0020and\u0020Punycode\u0020formats.",
-            "url": "classes/CNIC-IDNA-Factory-ConverterFactory.html#method_convert"
-        },                {
-            "fqsen": "\\CNIC\\IDNA\\Factory\\ConverterFactory\u003A\u003AtoUnicode\u0028\u0029",
-            "name": "toUnicode",
-            "summary": "Convert\u0020a\u0020domain\u0020string\u0020to\u0020Unicode\u0020format.",
-            "url": "classes/CNIC-IDNA-Factory-ConverterFactory.html#method_toUnicode"
-        },                {
-            "fqsen": "\\CNIC\\IDNA\\Factory\\ConverterFactory\u003A\u003AtoASCII\u0028\u0029",
-            "name": "toASCII",
-            "summary": "Convert\u0020a\u0020domain\u0020string\u0020to\u0020Punycode\u0020format.",
-            "url": "classes/CNIC-IDNA-Factory-ConverterFactory.html#method_toASCII"
-        },                {
-            "fqsen": "\\CNIC\\IDNA\\Factory\\ConverterFactory\u003A\u003AhandleConversion\u0028\u0029",
-            "name": "handleConversion",
-            "summary": "Handle\u0020conversion\u0020of\u0020a\u0020keyword\u0020between\u0020Unicode\u0020and\u0020Punycode\u0020formats.",
-            "url": "classes/CNIC-IDNA-Factory-ConverterFactory.html#method_handleConversion"
-        },                {
-            "fqsen": "\\CNIC\\IDNA\\Factory\\ConverterFactory\u003A\u003AtransitionalProcessing\u0028\u0029",
-            "name": "transitionalProcessing",
-            "summary": "Check\u0020if\u0020the\u0020provided\u0020top\u002Dlevel\u0020domain\u0020\u0028TLD\u0029\u0020is\u0020non\u002Dtransitional.",
-            "url": "classes/CNIC-IDNA-Factory-ConverterFactory.html#method_transitionalProcessing"
-        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -105,10 +75,5 @@ Search.appendIndex(
             "name": "CNIC",
             "summary": "",
             "url": "namespaces/cnic.html"
-        },                {
-            "fqsen": "\\CNIC\\IDNA\\Factory",
-            "name": "Factory",
-            "summary": "",
-            "url": "namespaces/cnic-idna-factory.html"
         }            ]
 );
