@@ -40,6 +40,6 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "semantic-release": "^25.0.8",
-    "@team-internet/semantic-release-plugins": "^1.0.7"
+    "@team-internet/semantic-release-plugins": "^1.1.1"
   }
 }
