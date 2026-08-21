@@ -14,6 +14,7 @@ The IDN Converter PHP Library provides a simple and efficient solution for conve
 
 - PHP 8.3 or higher
 - `ext-intl`, `ext-mbstring` and `ext-json`
+- `ext-mbstring` must be built with the mbregex (oniguruma) option enabled. Composer cannot express this narrower requirement, so on a PHP build compiled with `--disable-mbregex`, `ext-mbstring` is present but conversion fails on an undefined `mb_ereg`. Every mainstream distro build of PHP includes mbregex.
 
 ## Installation
 
