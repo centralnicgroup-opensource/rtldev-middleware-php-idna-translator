@@ -6,6 +6,8 @@ IDNATranslator (CNIC\IDNA\Tests\IDNATranslator)
  [x] To a s c i i with transitional
  [x] To a s c i i without transitional
  [x] Transitional processing auto detection
+ [x] Known conformance vectors
  [x] To unicode
+ [x] To unicode transitional option
  [x] To a s c i i single label with escaped unicode
 

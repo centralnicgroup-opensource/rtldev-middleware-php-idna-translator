@@ -1,3 +1,23 @@
+# [3.0.0](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v2.0.1...v3.0.0) (2026-08-21)
+
+
+### Bug Fixes
+
+* **idna:** make transitional IDNA processing reachable and correctly named ([1424895](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/commit/14248956476a9ced495e3b1111630e91d8727919))
+
+
+### BREAKING CHANGES
+
+* **idna:** ConverterFactory::transitionalProcessing() now
+returns true when transitional processing applies (previously true
+meant non-transitional). Callers relying on the old inverted meaning,
+or expecting the transitionalProcessing option to have no effect,
+must review their usage.
+
+Refs: RSRMID-2979
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+
 ## [2.0.1](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v2.0.0...v2.0.1) (2026-08-21)
 
 
