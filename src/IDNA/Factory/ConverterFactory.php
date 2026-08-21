@@ -82,9 +82,11 @@ final class ConverterFactory
 
         foreach ($domainArray as &$tmpKeyword) {
             if (ASCIIConverter::check($tmpKeyword)) {
+                // Already-decoded output must not be run through conversion again below:
+                // re-converting it would re-apply transitional mapping to a result that
+                // is already final, corrupting it (e.g. "faß" would become "fass").
                 $tmpKeyword = UnicodeConverter::convert($tmpKeyword, $options);
-            }
-            if (UnicodeConverter::containsUnicodeCharacters($tmpKeyword)) {
+            } elseif (UnicodeConverter::containsUnicodeCharacters($tmpKeyword)) {
                 $tmpKeyword = UnicodeConverter::decode($tmpKeyword);
                 $tmpKeyword = UnicodeConverter::convert($tmpKeyword, $options);
             }
@@ -165,11 +167,11 @@ final class ConverterFactory
     }
 
     /**
-     * Check if the provided top-level domain (TLD) is non-transitional.
+     * Determine whether transitional IDNA processing should be applied to the given domain.
      *
      * @param string $keyword The domain string to check.
      * @param array<string, mixed> $options Additional options for the conversion process.
-     * @return bool Returns true if the TLD is non-transitional, false otherwise.
+     * @return bool Returns true if transitional processing should be applied, false for non-transitional processing.
      *
      * @api
      */
@@ -183,9 +185,33 @@ final class ConverterFactory
             ? $options["domain"]
             : $keyword;
 
-        return mb_eregi(
+        // These ccTLD registries require non-transitional processing (deviation characters kept as-is).
+        return !mb_eregi(
             "\.(art|be|ca|de|fr|pm|re|swiss|tf|wf|yt)\.?$",
             $domain
         );
+    }
+
+    /**
+     * Map UTS46 "deviation" characters to their transitional-processing equivalents.
+     *
+     * Current ICU versions no longer distinguish IDNA_DEFAULT from
+     * IDNA_NONTRANSITIONAL_TO_ASCII/TO_UNICODE, so transitional processing is
+     * implemented here explicitly rather than delegated to ICU, keeping
+     * results stable across ICU versions.
+     *
+     * @param string $keyword The keyword to map.
+     * @return string The keyword with deviation characters mapped.
+     *
+     * @internal
+     */
+    public static function applyTransitionalMapping(string $keyword): string
+    {
+        return strtr($keyword, [
+            "\u{00DF}" => "ss",
+            "\u{03C2}" => "\u{03C3}",
+            "\u{200C}" => "",
+            "\u{200D}" => "",
+        ]);
     }
 }
