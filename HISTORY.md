@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v2.0.0...v2.0.1) (2026-08-21)
+
+
+### Bug Fixes
+
+* **packaging:** ship LICENSE and composer.json, drop dev-only archive weight ([b4f2334](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/commit/b4f23349e8dcc201f1c9cc75e9c59c1e56b81fad))
+
 # [2.0.0](https://github.com/centralnicgroup-opensource/rtldev-middleware-php-idna-translator/compare/v1.0.5...v2.0.0) (2026-07-02)
 
 

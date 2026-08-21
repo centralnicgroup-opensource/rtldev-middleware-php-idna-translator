@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1783010607">
-  <project timestamp="1783010607" name="Clover Coverage">
+<coverage generated="1787320216">
+  <project timestamp="1787320216" name="Clover Coverage">
     <package name="CNIC\IDNA\Converter">
       <file name="/home/runner/work/rtldev-middleware-php-idna-translator/rtldev-middleware-php-idna-translator/src/IDNA/Converter/ASCIIConverter.php">
         <class name="CNIC\IDNA\Converter\ASCIIConverter" namespace="CNIC\IDNA\Converter">
