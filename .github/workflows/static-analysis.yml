@@ -16,6 +16,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Assert distribution archive contents
+        run: |
+          expected=$(printf '%s\n' 'LICENSE' 'README.md' 'composer.json' 'src/' | sort)
+          actual=$(git archive HEAD | tar -t | awk -F/ '{print $1 (NF>1 ? "/" : "")}' | sort -u)
+          if [ "$expected" != "$actual" ]; then
+            echo "::error::Distribution archive top-level contents changed."
+            echo "Expected:"; echo "$expected"
+            echo "Actual:"; echo "$actual"
+            exit 1
+          fi
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
