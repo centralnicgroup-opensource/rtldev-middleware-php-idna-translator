@@ -37,20 +37,20 @@ final class IDNATranslatorTest extends TestCase
             'x\u0301\u0327.de' => 'xn--x-xbb7i.de',
             'عربي.de' => 'xn--ngbrx4e.de',
             'نامهای.de' => 'xn--mgba3gch31f.de',
-            'fäß.de' => 'xn--f-qfao.de',
-            'faß.de' => 'xn--fa-hia.de',
+            'fäß.de' => 'xn--fss-qla.de',
+            'faß.de' => 'fass.de',
             'xn--fa-hia.de' => 'xn--fa-hia.de',
-            'σόλος.gr' => 'xn--wxaijb9b.gr',
-            'Σόλος.gr' => 'xn--wxaijb9b.gr',
-            'ΣΌΛΟΣ.grﻋﺮﺑﻲ.de' => 'xn--wxaijb9b.xn--gr-gtd9a1b0g.de',
-            'نامه\u200Cای.de' => 'xn--mgba3gch31f060k.de',
-        ],
-        'toAsciiWithoutTransitional' => [
             'σόλος.gr' => 'xn--wxaikc6b.gr',
             'Σόλος.gr' => 'xn--wxaikc6b.gr',
             'ΣΌΛΟΣ.grﻋﺮﺑﻲ.de' => 'xn--wxaikc6b.xn--gr-gtd9a1b0g.de',
-            'fäß.de' => 'xn--fss-qla.de',
-            'faß.de' => 'fass.de',
+            'نامه\u200Cای.de' => 'xn--mgba3gch31f.de',
+        ],
+        'toAsciiWithoutTransitional' => [
+            'σόλος.gr' => 'xn--wxaijb9b.gr',
+            'Σόλος.gr' => 'xn--wxaijb9b.gr',
+            'ΣΌΛΟΣ.grﻋﺮﺑﻲ.de' => 'xn--wxaijb9b.xn--gr-gtd9a1b0g.de',
+            'fäß.de' => 'xn--f-qfao.de',
+            'faß.de' => 'xn--fa-hia.de',
             'xn--bb-eka.at' => 'xn--bb-eka.at',
             'XN--BB-EKA.AT' => 'xn--bb-eka.at',
             'fass.de' => 'fass.de',
@@ -69,6 +69,7 @@ final class IDNATranslatorTest extends TestCase
             'x\u0301\u0327.de' => 'xn--x-xbb7i.de',
             'عربي.de' => 'xn--ngbrx4e.de',
             'نامهای.de' => 'xn--mgba3gch31f.de',
+            'نامه\u200Cای.de' => 'xn--mgba3gch31f060k.de',
         ],
         'toUnicode' => [
             '' => '',
@@ -77,7 +78,7 @@ final class IDNATranslatorTest extends TestCase
             'ÖBB.at' => 'öbb.at',
             'O\u0308bb.at' => 'öbb.at',
             'xn--bb-eka.at' => 'öbb.at',
-            'faß.de' => 'faß.de',
+            'faß.de' => 'fass.de',
             'fass.de' => 'fass.de',
             'xn--fa-hia.de' => 'faß.de',
             'not=std3' => 'not=std3',
@@ -87,11 +88,11 @@ final class IDNATranslatorTest extends TestCase
             //'\ud83d\udca9' => '\ud83d\udca9',
             //'\ud87e\udcca' => '\ud84c\udc0a',
             //'\udb40\udd00\ud87e\udcca' => '\ud84c\udc0a',
-            'fäß.de' => 'fäß.de',
+            'fäß.de' => 'fäss.de',
             '₹.com' => '₹.com',
             '𑀓.com' => '𑀓.com',
             //'a‌b' => 'a\u200Cb',
-            'a‌b' => 'a‌b',
+            'a‌b' => 'ab',
             'xn--ab-j1t' => 'a‌b',
             'ȡog.de' => 'ȡog.de',
             '☕.de' => '☕.de',
@@ -101,12 +102,12 @@ final class IDNATranslatorTest extends TestCase
             '日本｡co．jp' => '日本.co.jp',
             'x\u0327\u0301.de' => 'x̧́.de',
             'x\u0301\u0327.de' => 'x̧́.de',
-            'σόλος.gr' => 'σόλος.gr',
-            'Σόλος.gr' => 'σόλος.gr',
-            'ΣΌΛΟΣ.grﻋﺮﺑﻲ.de' => 'σόλος.grعربي.de',
+            'σόλος.gr' => 'σόλοσ.gr',
+            'Σόλος.gr' => 'σόλοσ.gr',
+            'ΣΌΛΟΣ.grﻋﺮﺑﻲ.de' => 'σόλοσ.grعربي.de',
             'عربي.de' => 'عربي.de',
             'نامهای.de' => 'نامهای.de',
-            'نامه\u200Cای.de' => 'نامه‌ای.de',
+            'نامه\u200Cای.de' => 'نامهای.de',
         ],
     ];
 
@@ -233,7 +234,7 @@ final class IDNATranslatorTest extends TestCase
         ];
 
         foreach ($nonTransitionalDomains as $domain) {
-            $this->assertTrue(ConverterFactory::transitionalProcessing($domain), $domain);
+            $this->assertFalse(ConverterFactory::transitionalProcessing($domain), $domain);
         }
 
         $transitionalDomains = [
@@ -245,10 +246,27 @@ final class IDNATranslatorTest extends TestCase
         ];
 
         foreach ($transitionalDomains as $domain) {
-            $this->assertFalse(ConverterFactory::transitionalProcessing($domain), $domain);
+            $this->assertTrue(ConverterFactory::transitionalProcessing($domain), $domain);
         }
 
-        $this->assertTrue(ConverterFactory::transitionalProcessing('münchen', ['domain' => 'münchen.de']));
+        $this->assertFalse(ConverterFactory::transitionalProcessing('münchen', ['domain' => 'münchen.de']));
+    }
+
+    // Conformance fixture cross-checked against an independent UTS46 implementation
+    // so this library's transitional-processing behaviour cannot drift unnoticed.
+    // See RSRMID-2979.
+    public function testKnownConformanceVectors(): void
+    {
+        $cases = [
+            'faß.com' => 'fass.com',
+            'θεός.gr' => 'xn--qxaf8a9a.gr',
+            'straße.de' => 'xn--strae-oqa.de',
+            'münchen.de' => 'xn--mnchen-3ya.de',
+        ];
+
+        foreach ($cases as $input => $expected) {
+            $this->assertEquals($expected, ConverterFactory::toASCII($input), $input);
+        }
     }
 
     // Test cases for converting domain names to Unicode
@@ -261,6 +279,45 @@ final class IDNATranslatorTest extends TestCase
                 "{$input} : {$output}"
             );
         }
+    }
+
+    // The transitionalProcessing option must also be honored when decoding to
+    // Unicode, not just when encoding to Punycode: deviation characters (ß, ς,
+    // ZWNJ, ZWJ) present directly in the input should be mapped under
+    // transitional processing and left as-is under non-transitional processing.
+    public function testToUnicodeTransitionalOption(): void
+    {
+        $cases = [
+            'faß.de' => ['fass.de', 'faß.de'],
+            'fäß.de' => ['fäss.de', 'fäß.de'],
+            'σόλος.gr' => ['σόλοσ.gr', 'σόλος.gr'],
+            'Σόλος.gr' => ['σόλοσ.gr', 'σόλος.gr'],
+            'نامه‌ای.de' => ['نامهای.de', 'نامه‌ای.de'],
+        ];
+
+        foreach ($cases as $input => [$withTransition, $withoutTransition]) {
+            $this->assertEquals(
+                $withTransition,
+                ConverterFactory::toUnicode($input, ["transitionalProcessing" => true]),
+                "{$input} (transitional)"
+            );
+            $this->assertEquals(
+                $withoutTransition,
+                ConverterFactory::toUnicode($input, ["transitionalProcessing" => false]),
+                "{$input} (non-transitional)"
+            );
+        }
+
+        // Decoding an already-encoded Punycode label is unaffected by the option:
+        // the deviation mapping only ever applies to literal Unicode input.
+        $this->assertEquals(
+            'faß.de',
+            ConverterFactory::toUnicode('xn--fa-hia.de', ["transitionalProcessing" => true])
+        );
+        $this->assertEquals(
+            'faß.de',
+            ConverterFactory::toUnicode('xn--fa-hia.de', ["transitionalProcessing" => false])
+        );
     }
 
     // Single-label (no TLD) keyword whose escaped Unicode decodes to characters

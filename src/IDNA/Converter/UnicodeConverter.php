@@ -18,11 +18,16 @@ final class UnicodeConverter implements ConversionInterface
     #[\Override]
     public static function convert(string $keyword, array $options): string
     {
-        $transitionalProcessing = ConverterFactory::transitionalProcessing($keyword, $options);
+        $transitional = ConverterFactory::transitionalProcessing($keyword, $options);
+
+        $decoded = self::decode($keyword);
+        if ($transitional) {
+            $decoded = ConverterFactory::applyTransitionalMapping($decoded);
+        }
 
         $idn = idn_to_utf8(
-            self::decode($keyword),
-            $transitionalProcessing ? IDNA_NONTRANSITIONAL_TO_UNICODE : IDNA_DEFAULT,
+            $decoded,
+            IDNA_NONTRANSITIONAL_TO_UNICODE,
             INTL_IDNA_VARIANT_UTS46
         );
 

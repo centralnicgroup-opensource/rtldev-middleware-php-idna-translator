@@ -18,12 +18,16 @@ final class ASCIIConverter implements ConversionInterface
     #[\Override]
     public static function convert(string $keyword, array $options): string
     {
-        $transitionalProcessing = ConverterFactory::transitionalProcessing($keyword, $options);
+        $transitional = ConverterFactory::transitionalProcessing($keyword, $options);
+
+        if ($transitional) {
+            $keyword = ConverterFactory::applyTransitionalMapping($keyword);
+        }
 
         // Convert domain to Punycode
         $punycode = idn_to_ascii(
             $keyword,
-            $transitionalProcessing ? IDNA_NONTRANSITIONAL_TO_ASCII : IDNA_DEFAULT,
+            IDNA_NONTRANSITIONAL_TO_ASCII,
             INTL_IDNA_VARIANT_UTS46
         );
 
