@@ -4,7 +4,15 @@
   "description": "PHP IDNA Translator to convert IDNA domains to Unicode and ASCII (IDN and Punycode)",
   "license": "MIT",
   "engines": {
-    "node": "^24.10.0"
+    "node": "^24.15.0 || ^26.0.0",
+    "npm": ">=12.0.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.0.0",
+      "onFail": "error"
+    }
   },
   "keywords": [
     "php idn converter",
