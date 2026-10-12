@@ -2,6 +2,7 @@
 # If a file or directory is not excluded using the export-ignore attribute, it will be included in the archive by default.
 
 # directories to exclude
+.claude export-ignore
 .devcontainer export-ignore
 .github export-ignore
 docs export-ignore
@@ -10,6 +11,7 @@ tests export-ignore
 
 # files to exclude
 .releaserc.json export-ignore
+CLAUDE.md export-ignore
 HISTORY.md export-ignore
 package.json export-ignore
 phpdoc.dist.xml export-ignore
