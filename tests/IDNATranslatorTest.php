@@ -71,6 +71,24 @@ final class IDNATranslatorTest extends TestCase
             'نامهای.de' => 'xn--mgba3gch31f.de',
             'نامه\u200Cای.de' => 'xn--mgba3gch31f060k.de',
         ],
+        // Default policy (no transitionalProcessing option): the TLD decides.
+        'toAsciiTldDefault' => [
+            'faß.com' => 'fass.com',
+            'faß.de.com' => 'fass.de.com',
+            'faß.dealer' => 'fass.dealer',
+            'faß.art' => 'xn--fa-hia.art',
+            'faß.be' => 'xn--fa-hia.be',
+            'faß.ca' => 'xn--fa-hia.ca',
+            'faß.de' => 'xn--fa-hia.de',
+            'faß.fr' => 'xn--fa-hia.fr',
+            'faß.pm' => 'xn--fa-hia.pm',
+            'faß.re' => 'xn--fa-hia.re',
+            'faß.swiss' => 'xn--fa-hia.swiss',
+            'faß.tf' => 'xn--fa-hia.tf',
+            'faß.wf' => 'xn--fa-hia.wf',
+            'faß.yt' => 'xn--fa-hia.yt',
+            'faß.DE' => 'xn--fa-hia.de',
+        ],
         'toUnicode' => [
             '' => '',
             'öbb.at' => 'öbb.at',
@@ -159,6 +177,27 @@ final class IDNATranslatorTest extends TestCase
     {
         foreach (self::$data['convert'] as $idn => $punycode) {
             $this->assertEquals($punycode, ConverterFactory::convert($idn)['punycode']);
+        }
+    }
+
+    // The TLD default must hold on both sides: a listed TLD keeps the deviation
+    // character (ß), every other TLD maps it. See RSRMID-3015.
+    public function testToASCIITldDefault(): void
+    {
+        foreach (self::$data['toAsciiTldDefault'] as $input => $output) {
+            $this->assertEquals($output, ConverterFactory::toASCII($input), "\nInput: {$input}");
+        }
+    }
+
+    public function testConvertTldDefault(): void
+    {
+        $this->assertEquals(
+            ['idn' => 'fass.com', 'punycode' => 'fass.com'],
+            ConverterFactory::convert('faß.com')
+        );
+
+        foreach (self::$data['toAsciiTldDefault'] as $input => $output) {
+            $this->assertEquals($output, ConverterFactory::convert($input)['punycode'], "\nInput: {$input}");
         }
     }
 
